@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Dashboard - Hospital System</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Custom CSS -->
@@ -17,7 +19,6 @@
 
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
-        
         <nav class="sidebar-nav">
             <ul>
                 <li>
@@ -45,7 +46,7 @@
                     </a>
                 </li>
                 <li style="margin-top: auto; padding-top: 2rem;">
-                    <a href="../auth/logout.php" style="color: #ef4444;">
+                    <a href="../auth/logout.php" class="text-danger">
                         <i data-lucide="log-out"></i>
                         <span>Logout</span>
                     </a>
@@ -56,50 +57,169 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <header class="header">
-            <button class="mobile-toggle" id="mobile-toggle">
-                <i data-lucide="menu"></i>
-            </button>
-            <h1>Welcome, <span style="color: var(--primary);">Patient</span></h1>
-            <div class="user-profile">
-                <!-- Profile icon or name could go here -->
+        <!-- Welcome Section -->
+        <header class="d-flex align-items-center justify-content-between mb-5">
+            <div class="d-flex align-items-center">
+                <button class="mobile-toggle" id="mobile-toggle">
+                    <i data-lucide="menu"></i>
+                </button>
+                <h1 class="header-title h2 mb-0">Welcome, <span class="text-primary">Nahom</span></h1>
             </div>
+            <a href="./bookappointment.php" class="btn btn-primary d-none d-sm-flex align-items-center gap-2">
+                <i data-lucide="plus-circle" size="18"></i>
+                Book Appointment
+            </a>
         </header>
 
-        <section>
-            <a href="./bookappointment.php" class="btn-primary">
-                <i data-lucide="plus-circle"></i>
-                Book New Appointment
-            </a>
-        </section>
-
-        <div class="cards-grid">
-            <div class="stat-card">
-                <div class="icon"><i data-lucide="clock"></i></div>
-                <h3>Upcoming</h3>
-                <p class="value">2</p>
+        <!-- Stat Cards Section -->
+        <div class="row g-4 mb-5">
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card p-4 h-100">
+                    <div class="stat-icon icon-primary">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <h3 class="text-muted small fw-bold text-uppercase mb-1">Upcoming Appointments</h3>
+                    <p class="h2 fw-bold mb-0">2</p>
+                </div>
             </div>
 
-            <div class="stat-card">
-                <div class="icon" style="background: rgba(34, 197, 94, 0.1); color: #22c55e;"><i data-lucide="check-circle"></i></div>
-                <h3>Completed</h3>
-                <p class="value">12</p>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card p-4 h-100">
+                    <div class="stat-icon icon-success">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <h3 class="text-muted small fw-bold text-uppercase mb-1">Completed Appointments</h3>
+                    <p class="h2 fw-bold mb-0">12</p>
+                </div>
             </div>
 
-            <div class="stat-card warning">
-                <div class="icon"><i data-lucide="alert-circle"></i></div>
-                <h3>Pending</h3>
-                <p class="value">1</p>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card p-4 h-100">
+                    <div class="stat-icon icon-warning">
+                        <i data-lucide="alert-circle"></i>
+                    </div>
+                    <h3 class="text-muted small fw-bold text-uppercase mb-1">Pending Appointments</h3>
+                    <p class="h2 fw-bold mb-0">1</p>
+                </div>
             </div>
 
-            <div class="stat-card danger">
-                <div class="icon"><i data-lucide="x-circle"></i></div>
-                <h3>Cancelled</h3>
-                <p class="value">0</p>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card p-4 h-100">
+                    <div class="stat-icon icon-danger">
+                        <i data-lucide="x-circle"></i>
+                    </div>
+                    <h3 class="text-muted small fw-bold text-uppercase mb-1">Cancelled Appointments</h3>
+                    <p class="h2 fw-bold mb-0">0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Next Appointment Card -->
+            <div class="col-12 col-xl-8">
+                <h4 class="fw-bold mb-4 d-flex align-items-center gap-2">
+                    <i data-lucide="calendar" class="text-primary"></i>
+                    Next Appointment
+                </h4>
+                <div class="card border-0 shadow-sm overflow-hidden">
+                    <div class="card-header bg-primary py-3 px-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="text-white fw-bold mb-0">Upcoming Visit</h5>
+                            <span class="badge bg-white text-primary rounded-pill px-3 py-2 fw-bold">Confirmed</span>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row g-4">
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex align-items-start gap-3">
+                                    <div class="bg-primary-subtle text-primary p-2 rounded-3">
+                                        <i data-lucide="user-round" size="20"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-muted small fw-semibold text-uppercase mb-1">Doctor Name</p>
+                                        <p class="h6 fw-bold mb-0">Dr. Sarah Johnson</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex align-items-start gap-3">
+                                    <div class="bg-primary-subtle text-primary p-2 rounded-3">
+                                        <i data-lucide="clock-3" size="20"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-muted small fw-semibold text-uppercase mb-1">Date & Time</p>
+                                        <p class="h6 fw-bold mb-0">May 20, 2024 - 10:30 AM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="bg-light p-3 rounded-4 mt-2">
+                                    <p class="text-muted small fw-semibold text-uppercase mb-2"><i data-lucide="sticky-note" size="14" class="me-1"></i> Meeting Notes</p>
+                                    <p class="mb-0 small text-dark">Routine checkup and blood work discussion. Please bring your latest test results if available.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-top d-flex gap-2">
+                            <button class="btn btn-primary px-4">View Details</button>
+                            <button class="btn btn-outline-secondary px-4">Reschedule</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Notifications -->
+            <div class="col-12 col-xl-4">
+                <h4 class="fw-bold mb-4 d-flex align-items-center gap-2">
+                    <i data-lucide="bell" class="text-primary"></i>
+                    Recent Notifications
+                </h4>
+                <div class="card border-0 shadow-sm p-4">
+                    <div class="d-flex flex-column gap-4">
+                        <!-- Notification Item -->
+                        <div class="d-flex gap-3 pb-3 border-bottom">
+                            <div class="bg-success-subtle text-success p-2 rounded-circle flex-shrink-0" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="check" size="18"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Appointment Approved</h6>
+                                <p class="text-muted small mb-1">Your appointment with Dr. Smith has been approved for tomorrow.</p>
+                                <span class="text-muted" style="font-size: 10px;">2 hours ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Notification Item -->
+                        <div class="d-flex gap-3 pb-3 border-bottom">
+                            <div class="bg-warning-subtle text-warning p-2 rounded-circle flex-shrink-0" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="info" size="18"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Reminder</h6>
+                                <p class="text-muted small mb-1">Don't forget to take your prescribed medication before your visit.</p>
+                                <span class="text-muted" style="font-size: 10px;">5 hours ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Notification Item -->
+                        <div class="d-flex gap-3">
+                            <div class="bg-primary-subtle text-primary p-2 rounded-circle flex-shrink-0" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="refresh-cw" size="18"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Schedule Updated</h6>
+                                <p class="text-muted small mb-1">The hospital schedule for next week has been updated.</p>
+                                <span class="text-muted" style="font-size: 10px;">Yesterday</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-light w-100 mt-4 fw-bold text-muted small">View All Notifications</button>
+                </div>
             </div>
         </div>
     </main>
 
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
@@ -124,3 +244,4 @@
     </script>
 </body>
 </html>
+
