@@ -203,3 +203,60 @@ body {
     }
 }
 
+/* Booking Stepper Styles */
+.booking-stepper::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: #e2e8f0;
+    z-index: 0;
+}
+
+.step-item {
+    position: relative;
+    z-index: 1;
+    width: 20%;
+}
+
+.step-icon {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #64748b;
+    transition: all 0.3s ease;
+}
+
+.step-item.active .step-icon {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 0 0 5px rgba(65, 234, 212, 0.2);
+}
+
+.step-item.active span {
+    color: var(--primary-color) !important;
+}
+
+/* Time Slot Radio Buttons Custom Styling */
+.btn-check:checked + .btn-outline-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(65, 234, 212, 0.3);
+}
+
+.btn-outline-primary:hover {
+    background-color: rgba(65, 234, 212, 0.1);
+    color: var(--primary-color);
+}
+
