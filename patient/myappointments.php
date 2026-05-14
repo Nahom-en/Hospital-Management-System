@@ -57,11 +57,18 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <header class="d-flex align-items-center mb-5">
-            <button class="mobile-toggle" id="mobile-toggle">
-                <i data-lucide="menu"></i>
-            </button>
-            <h1 class="header-title h2 mb-0">My <span class="text-primary">Appointments</span></h1>
+        <header class="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-5 gap-4">
+            <div class="d-flex align-items-center">
+                <button class="mobile-toggle me-3" id="mobile-toggle">
+                    <i data-lucide="menu"></i>
+                </button>
+                <h1 class="header-title h2 mb-0">My <span class="text-primary">Appointments</span></h1>
+            </div>
+            
+            <div class="search-box position-relative" style="min-width: 300px;">
+                <i data-lucide="search" class="position-absolute top-50 start-0 translate-middle-y ms-3 text-muted" size="18"></i>
+                <input type="text" class="form-control ps-5 py-2 rounded-pill border-2" placeholder="Search by doctor or date...">
+            </div>
         </header>
 
         <div class="card border-0 shadow-sm overflow-hidden">

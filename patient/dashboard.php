@@ -60,16 +60,26 @@
         <!-- Welcome Section -->
         <header class="d-flex align-items-center justify-content-between mb-5">
             <div class="d-flex align-items-center">
-                <button class="mobile-toggle" id="mobile-toggle">
+                <button class="mobile-toggle me-3" id="mobile-toggle">
                     <i data-lucide="menu"></i>
                 </button>
-                <h1 class="header-title h2 mb-0">Welcome, <span class="text-primary">Nahom</span></h1>
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1" id="time-greeting">Welcome</p>
+                    <h1 class="header-title h2 mb-0 fw-bold">Welcome, <span class="text-primary">Nahom</span></h1>
+                </div>
             </div>
-            <a href="./bookappointment.php" class="btn btn-primary d-none d-sm-flex align-items-center gap-2">
-                <i data-lucide="plus-circle" size="18"></i>
+            <a href="./bookappointment.php" class="btn btn-primary px-4 py-2 fw-bold d-none d-md-flex align-items-center gap-2 shadow-sm rounded-3">
+                <i data-lucide="calendar-plus" size="18"></i>
                 Book Appointment
             </a>
         </header>
+
+        <div class="d-md-none mb-4">
+            <a href="./bookappointment.php" class="btn btn-primary w-100 py-3 fw-bold shadow-sm rounded-3">
+                <i data-lucide="calendar-plus" size="18" class="me-2"></i>
+                Book Appointment
+            </a>
+        </div>
 
         <!-- Stat Cards Section -->
         <div class="row g-4 mb-5">
@@ -238,9 +248,12 @@
                 !sidebar.contains(e.target) && 
                 !mobileToggle.contains(e.target) && 
                 sidebar.classList.contains('active')) {
-                sidebar.classList.remove('active');
-            }
-        });
+        // Dynamic Greeting
+        const greetingEl = document.getElementById('time-greeting');
+        const hour = new Date().getHours();
+        if (hour < 12) greetingEl.innerText = "Good Morning";
+        else if (hour < 17) greetingEl.innerText = "Good Afternoon";
+        else greetingEl.innerText = "Good Evening";
     </script>
 </body>
 </html>

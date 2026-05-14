@@ -82,112 +82,112 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Hospital System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .login-container {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-            font-weight: bold;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        input:focus {
-            outline: none;
-            border-color: #28a745;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        button:hover {
-            background: #218838;
-        }
-        .error {
-            background: #f8d7da;
-            color: #721c24;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            border: 1px solid #f5c6cb;
-        }
-        .register-link {
-            text-align: center;
-            margin-top: 20px;
-            color: #666;
-        }
-        .register-link a {
-            color: #28a745;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .register-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Auth CSS -->
+    <link rel="stylesheet" href="../assets/css/auth.css">
 </head>
 <body>
-    <div class="login-container">
-        <h2>🏥 Hospital System Login</h2>
-        
-        <?php if ($error): ?>
-            <div class="error"><?php echo htmlspecialchars($error); ?></div>
-        <?php endif; ?>
-        
-        <!-- Form submits to itself -->
-        <form method="POST" action="login.php">
-            
-            <label for="email">Email Address:</label>
-            <input type="email" 
-                   id="email" 
-                   name="email" 
-                   placeholder="Enter your email"
-                   required>
-            
-            <label for="password">Password:</label>
-            <input type="password" 
-                   id="password" 
-                   name="password" 
-                   placeholder="Enter your password"
-                   required>
-            
-            <button type="submit" name="login">Login</button>
-        </form>
-        
-        <div class="register-link">
-            <p>Don't have an account? <a href="register.php">Register here</a></p>
+
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <!-- Left Side: Info (Desktop Only) -->
+            <div class="auth-info-side">
+                <div class="mb-auto">
+                    <div class="auth-logo">
+                        <i data-lucide="hospital"></i>
+                        <span>MedFlow</span>
+                    </div>
+                </div>
+                <div class="mb-auto py-5">
+                    <h1 class="display-5 fw-bold mb-4">Your Health, <br><span class="text-primary">Simplified.</span></h1>
+                    <p class="lead opacity-75">Connect with top physicians, manage your appointments, and track your health journey in one place.</p>
+                </div>
+                <div class="mt-auto">
+                    <div class="d-flex align-items-center gap-3 p-3 bg-white bg-opacity-10 rounded-4">
+                        <div class="bg-primary p-2 rounded-circle">
+                            <i data-lucide="shield-check" class="text-dark" size="20"></i>
+                        </div>
+                        <p class="small mb-0">Secure and HIPAA-compliant health data management.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Form -->
+            <div class="auth-form-side">
+                <div class="mb-5">
+                    <h2 class="fw-bold mb-2">Welcome Back</h2>
+                    <p class="text-muted">Please enter your credentials to access your account.</p>
+                </div>
+
+                <?php if ($error): ?>
+                    <div class="alert alert-danger border-0 rounded-4 d-flex align-items-center gap-3 mb-4" role="alert">
+                        <i data-lucide="alert-circle" size="20"></i>
+                        <div><?php echo htmlspecialchars($error); ?></div>
+                    </div>
+                <?php endif; ?>
+
+                <form method="POST" action="login.php">
+                    <div class="mb-4">
+                        <label for="email" class="form-label small fw-bold text-muted text-uppercase">Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-2 border-end-0 rounded-start-3">
+                                <i data-lucide="mail" size="18" class="text-muted"></i>
+                            </span>
+                            <input type="email" 
+                                   id="email" 
+                                   name="email" 
+                                   class="form-control border-2 border-start-0 rounded-end-3" 
+                                   placeholder="name@example.com"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label for="password" class="form-label small fw-bold text-muted text-uppercase mb-0">Password</label>
+                            <a href="#" class="small text-primary fw-bold text-decoration-none">Forgot Password?</a>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-2 border-end-0 rounded-start-3">
+                                <i data-lucide="lock" size="18" class="text-muted"></i>
+                            </span>
+                            <input type="password" 
+                                   id="password" 
+                                   name="password" 
+                                   class="form-control border-2 border-start-0 rounded-end-3" 
+                                   placeholder="••••••••"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="remember">
+                        <label class="form-check-label small text-muted" for="remember">
+                            Remember me for 30 days
+                        </label>
+                    </div>
+
+                    <button type="submit" name="login" class="btn btn-primary w-100 py-3 mb-4">
+                        Login to Account
+                    </button>
+
+                    <div class="text-center">
+                        <p class="text-muted small">Don't have an account? <a href="register.php" class="text-primary fw-bold text-decoration-none">Create Account</a></p>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
-</html>
+</html>

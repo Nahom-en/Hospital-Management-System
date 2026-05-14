@@ -57,11 +57,17 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <header class="d-flex align-items-center mb-5">
-            <button class="mobile-toggle" id="mobile-toggle">
-                <i data-lucide="menu"></i>
-            </button>
-            <h1 class="header-title h2 mb-0">My <span class="text-primary">Profile</span></h1>
+        <header class="d-flex align-items-center justify-content-between mb-5">
+            <div class="d-flex align-items-center">
+                <button class="mobile-toggle me-3" id="mobile-toggle">
+                    <i data-lucide="menu"></i>
+                </button>
+                <h1 class="header-title h2 mb-0">My <span class="text-primary">Profile</span></h1>
+            </div>
+            <a href="./dashboard.php" class="btn btn-light px-4 py-2 fw-bold d-none d-md-flex align-items-center gap-2 border shadow-sm">
+                <i data-lucide="arrow-left" size="18"></i>
+                Back to Dashboard
+            </a>
         </header>
 
         <div class="row">

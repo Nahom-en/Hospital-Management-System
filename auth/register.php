@@ -74,123 +74,134 @@ if (isset($_POST['register'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Hospital System</title>
-
-    <style>
-
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            box-sizing: border-box;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-
-        .error {
-            color: red;
-            margin-bottom: 15px;
-            padding: 10px;
-            background: #ffe6e6;
-            border: 1px solid red;
-        }
-
-        .success {
-            color: green;
-            margin-bottom: 15px;
-            padding: 10px;
-            background: #e6ffe6;
-            border: 1px solid green;
-        }
-
-        p {
-            text-align: center;
-        }
-
-    </style>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Auth CSS -->
+    <link rel="stylesheet" href="../assets/css/auth.css">
 </head>
-
 <body>
 
-    <h2>Register New Account</h2>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <!-- Left Side: Info (Desktop Only) -->
+            <div class="auth-info-side">
+                <div class="mb-auto">
+                    <div class="auth-logo">
+                        <i data-lucide="hospital"></i>
+                        <span>MedFlow</span>
+                    </div>
+                </div>
+                <div class="mb-auto py-5">
+                    <h1 class="display-5 fw-bold mb-4">Join Our <br><span class="text-primary">Community.</span></h1>
+                    <p class="lead opacity-75">Experience the future of healthcare management. Secure, simple, and patient-centered.</p>
+                </div>
+                <div class="mt-auto">
+                    <div class="d-flex align-items-center gap-3 p-3 bg-white bg-opacity-10 rounded-4">
+                        <div class="bg-primary p-2 rounded-circle">
+                            <i data-lucide="user-plus" class="text-dark" size="20"></i>
+                        </div>
+                        <p class="small mb-0">Join thousands of patients managing their health smarter.</p>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Display error message -->
-    <?php if (!empty($error)): ?>
-        <div class="error">
-            <?php echo htmlspecialchars($error); ?>
+            <!-- Right Side: Form -->
+            <div class="auth-form-side">
+                <div class="mb-5">
+                    <h2 class="fw-bold mb-2">Create Account</h2>
+                    <p class="text-muted">Start your journey with MedFlow today.</p>
+                </div>
+
+                <?php if (!empty($error)): ?>
+                    <div class="alert alert-danger border-0 rounded-4 d-flex align-items-center gap-3 mb-4" role="alert">
+                        <i data-lucide="alert-circle" size="20"></i>
+                        <div><?php echo htmlspecialchars($error); ?></div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (!empty($success)): ?>
+                    <div class="alert alert-success border-0 rounded-4 d-flex align-items-center gap-3 mb-4" role="alert">
+                        <i data-lucide="check-circle" size="20"></i>
+                        <div><?php echo htmlspecialchars($success); ?></div>
+                    </div>
+                <?php endif; ?>
+
+                <form method="POST" action="">
+                    <div class="mb-4">
+                        <label for="email" class="form-label small fw-bold text-muted text-uppercase">Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-2 border-end-0 rounded-start-3">
+                                <i data-lucide="mail" size="18" class="text-muted"></i>
+                            </span>
+                            <input type="email" 
+                                   id="email" 
+                                   name="email" 
+                                   class="form-control border-2 border-start-0 rounded-end-3" 
+                                   placeholder="name@example.com"
+                                   value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="password" class="form-label small fw-bold text-muted text-uppercase">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-2 border-end-0 rounded-start-3">
+                                <i data-lucide="lock" size="18" class="text-muted"></i>
+                            </span>
+                            <input type="password" 
+                                   id="password" 
+                                   name="password" 
+                                   class="form-control border-2 border-start-0 rounded-end-3" 
+                                   placeholder="Min. 6 characters"
+                                   minlength="6"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="confirm_password" class="form-label small fw-bold text-muted text-uppercase">Confirm Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-2 border-end-0 rounded-start-3">
+                                <i data-lucide="shield-check" size="18" class="text-muted"></i>
+                            </span>
+                            <input type="password" 
+                                   id="confirm_password" 
+                                   name="confirm_password" 
+                                   class="form-control border-2 border-start-0 rounded-end-3" 
+                                   placeholder="Repeat password"
+                                   minlength="6"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="terms" required>
+                        <label class="form-check-label small text-muted" for="terms">
+                            I agree to the <a href="#" class="text-primary text-decoration-none">Terms of Service</a> and <a href="#" class="text-primary text-decoration-none">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" name="register" class="btn btn-primary w-100 py-3 mb-4">
+                        Create Account
+                    </button>
+
+                    <div class="text-center">
+                        <p class="text-muted small">Already have an account? <a href="login.php" class="text-primary fw-bold text-decoration-none">Login here</a></p>
+                    </div>
+                </form>
+            </div>
         </div>
-    <?php endif; ?>
+    </div>
 
-    <!-- Display success message -->
-    <?php if (!empty($success)): ?>
-        <div class="success">
-            <?php echo htmlspecialchars($success); ?>
-        </div>
-    <?php endif; ?>
-
-    <!-- Registration Form -->
-    <form method="POST" action="">
-
-        <label>Email:</label>
-        <input
-            type="email"
-            name="email"
-            required
-            value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>"
-        >
-
-        <label>Password:</label>
-        <input
-            type="password"
-            name="password"
-            minlength="6"
-            required
-        >
-
-        <label>Confirm Password:</label>
-        <input
-            type="password"
-            name="confirm_password"
-            minlength="6"
-            required
-        >
-
-        <button type="submit" name="register">
-            Register
-        </button>
-
-    </form>
-
-    <p>
-        Already have an account?
-        <a href="login.php">Login here</a>
-    </p>
-
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
-</html>
+</html>
