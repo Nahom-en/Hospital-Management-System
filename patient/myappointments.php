@@ -72,24 +72,74 @@
                             <th class="ps-4 py-3">Doctor</th>
                             <th class="py-3">Date</th>
                             <th class="py-3">Time</th>
+                            <th class="py-3">Reason</th>
                             <th class="py-3">Status</th>
                             <th class="py-3 text-end pe-4">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- This would be populated from database -->
+                        <!-- Dummy Data for demonstration -->
                         <tr>
-                            <td colspan="5" class="py-5 text-center">
-                                <div class="d-flex flex-column align-items-center py-4">
-                                    <div class="bg-light rounded-circle p-3 mb-3">
-                                        <i data-lucide="calendar-x" class="text-muted" size="48"></i>
-                                    </div>
-                                    <h5 class="fw-bold mb-1">No appointments found</h5>
-                                    <p class="text-muted mb-4">You haven't booked any appointments yet.</p>
-                                    <a href="./bookappointment.php" class="btn btn-primary px-4">
-                                        <i data-lucide="plus-circle" class="me-2"></i>
-                                        Book Now
-                                    </a>
+                            <td class="ps-4 fw-bold">Dr. Sarah Johnson</td>
+                            <td>May 20, 2024</td>
+                            <td>10:30 AM</td>
+                            <td><span class="text-muted small">Routine Checkup</span></td>
+                            <td><span class="badge bg-warning text-dark px-3 py-2 rounded-pill">Pending</span></td>
+                            <td class="text-end pe-4">
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-sm btn-light border" title="View"><i data-lucide="eye" size="16"></i></button>
+                                    <button class="btn btn-sm btn-outline-primary" title="Reschedule"><i data-lucide="calendar-clock" size="16"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger" title="Cancel"><i data-lucide="x" size="16"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ps-4 fw-bold">Dr. Michael Smith</td>
+                            <td>May 15, 2024</td>
+                            <td>02:15 PM</td>
+                            <td><span class="text-muted small">Heart Consultation</span></td>
+                            <td><span class="badge bg-success px-3 py-2 rounded-pill text-white">Approved</span></td>
+                            <td class="text-end pe-4">
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-sm btn-light border" title="View"><i data-lucide="eye" size="16"></i></button>
+                                    <button class="btn btn-sm btn-outline-primary" title="Reschedule"><i data-lucide="calendar-clock" size="16"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger" title="Cancel"><i data-lucide="x" size="16"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ps-4 fw-bold">Dr. Emily Williams</td>
+                            <td>May 10, 2024</td>
+                            <td>09:00 AM</td>
+                            <td><span class="text-muted small">Fever and Cold</span></td>
+                            <td><span class="badge bg-primary px-3 py-2 rounded-pill text-white">Completed</span></td>
+                            <td class="text-end pe-4">
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-sm btn-light border" title="View"><i data-lucide="eye" size="16"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ps-4 fw-bold">Dr. David Brown</td>
+                            <td>May 05, 2024</td>
+                            <td>11:45 AM</td>
+                            <td><span class="text-muted small">Skin Allergy</span></td>
+                            <td><span class="badge bg-danger px-3 py-2 rounded-pill text-white">Rejected</span></td>
+                            <td class="text-end pe-4">
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-sm btn-light border" title="View"><i data-lucide="eye" size="16"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ps-4 fw-bold">Dr. Jessica Lee</td>
+                            <td>May 01, 2024</td>
+                            <td>04:30 PM</td>
+                            <td><span class="text-muted small">Dental Pain</span></td>
+                            <td><span class="badge bg-secondary px-3 py-2 rounded-pill text-white">Cancelled</span></td>
+                            <td class="text-end pe-4">
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-sm btn-light border" title="View"><i data-lucide="eye" size="16"></i></button>
                                 </div>
                             </td>
                         </tr>
