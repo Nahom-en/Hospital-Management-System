@@ -5,16 +5,14 @@ session_start();
 
 // STEP 2: Include database connection
 require_once '../config/database.php';
+require_once '../includes/auth_helper.php';
 
 // STEP 3: Initialize error variable
 $error = '';
 
 // STEP 4: Check if user is already logged in
-// If yes, redirect them to dashboard (no need to login again)
-if (isset($_SESSION['user_id'])) {
-    header("Location: ../dashboard.php");
-    exit();
-}
+// If yes, redirect them to their respective dashboard
+redirect_if_logged_in();
 
 // STEP 5: Check if form was submitted
 if (isset($_POST['login'])) {
@@ -42,7 +40,6 @@ if (isset($_POST['login'])) {
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 
                 // STEP 11: Verify password
-                // password_verify() compares plain password with hashed password
                 if (password_verify($password, $user['password'])) {
                     
                     // ✅ PASSWORD CORRECT! Login successful
@@ -52,23 +49,16 @@ if (isset($_POST['login'])) {
                     $_SESSION['email'] = $user['email'];
                     $_SESSION['role_id'] = $user['role_id'];
                     $_SESSION['logged_in'] = true;
-                    
-                    // STEP 13: Redirect to dashboard
-                    header("Location: ../dashboard.php");
-                    exit();
+
+                    // STEP 13: Redirect based on role using our helper
+                    redirect_if_logged_in();
                     
                 } else {
-                    // ❌ Password incorrect
                     $error = "Invalid email or password!";
                 }
-                
             } else {
-                // ❌ User not found
-                // Note: We use same message as wrong password for security
-                // (Don't reveal if email exists or not)
                 $error = "Invalid email or password!";
             }
-            
         } catch(PDOException $e) {
             $error = "Login failed: " . $e->getMessage();
         }
@@ -180,4 +170,4 @@ if (isset($_POST['login'])) {
         lucide.createIcons();
     </script>
 </body>
-</html>
+</html>
