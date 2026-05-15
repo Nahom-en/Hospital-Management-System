@@ -1,3 +1,7 @@
+<?php
+require_once '../includes/auth_helper.php';
+require_role(1);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
